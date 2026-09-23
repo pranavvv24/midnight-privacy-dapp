@@ -25,6 +25,29 @@ The repository contains our first Compact contract (`contracts/private-note.comp
 - Circuit
 - disclose()
 
+## Compilation
+
+To compile the Compact contract and generate the `managed/` artifacts, run:
+```bash
+npm run compile
+```
+This executes `compact compile contracts/private-note.compact contracts/managed/private-note`. 
+
+When successful, this command will parse the Compact source code, generate the zero-knowledge circuits, and produce proving and verification keys inside the `contracts/managed/private-note` directory.
+
+*(Note: Currently, compilation fails because the Compact compiler requires WSL on Windows, which is not installed on this host system. Docker is also unavailable to run the compiler containerized).*
+
+### Current Build Status
+
+- [x] Compact contract created
+- [ ] Contract compiles
+- [ ] managed/ generated
+- [ ] Tests pass
+- [ ] Contract deployed
+- [ ] Initial product idea
+- [ ] Evidence screenshots
+- [ ] 5+ meaningful commits
+
 ## Quick start
 
 Requirements: Node 22, Docker (with Compose v2), and the Compact compiler at the version pinned in `.compact-version` at the create-mn-app repo root (the version this project was scaffolded against).
