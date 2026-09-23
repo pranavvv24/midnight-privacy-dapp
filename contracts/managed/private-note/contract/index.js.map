@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../../../../",
+  "sources": ["contracts/private-note.compact"],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAAA;;;;;;;;;;;;;MAcA,AAAA,cAGC;;;;;;;;;;;;;;;;;;;;;;OAAA;MAID,AAAA,OAEC;;;;;;;;;;;;;;;;;;;;;;OAAA;;;;;;;;;;GACA;EAxBD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAMA;;;;;;;;;yEAA2C;;;;;;;GAkB1C;EAdD,AAAA,cAAwC;;0DAAxC,WAAwC;;;;;;;GAAA;EAIxC,AAAA,iBAGC;UAFS,MAAoB;IAC1B;;;;;;;2HAAsB,MAAI;;yEAAhB;;GACb;EAID,AAAA,UAEC;mCADU;;;;;;;;;;;wGAAU;GACpB;;;;;;;;;;;;;;;;IAjBD;qCAAA;;;;;;;;;;;0GAA2C;KAAA;;;;;;;;;;"
+}
