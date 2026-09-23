@@ -1,6 +1,29 @@
-# temp-app
+# midnight-privacy-dapp
 
 A Midnight Network smart contract scaffolded with create-mn-app.
+
+## Level 1 Progress
+
+- [x] Toolchain installed
+- [x] First Compact contract
+- [ ] Contract compiles
+- [ ] Tests pass
+- [ ] managed/ generated
+- [ ] Contract deployed
+- [ ] Initial product idea
+- [ ] Evidence screenshots
+- [ ] 5+ meaningful commits
+
+## Level 1 Contract
+
+The repository contains our first Compact contract (`contracts/private-note.compact`), demonstrating the privacy-first model:
+
+### Contract Components
+
+- Public ledger state
+- Private witness
+- Circuit
+- disclose()
 
 ## Quick start
 

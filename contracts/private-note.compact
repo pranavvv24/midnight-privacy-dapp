@@ -1,0 +1,24 @@
+pragma language_version >= 0.23;
+
+import CompactStandardLibrary;
+
+// Public ledger state
+// Stores information intentionally made public
+export ledger publicNote: Opaque<"string">;
+
+// Private witness
+// Supplies private input from the proving party
+witness privateNote(): Opaque<"string">;
+
+// Disclosure Circuit
+// Explicitly reveals the selected private value
+export circuit setPrivateNote(): [] {
+    const note = privateNote();
+    publicNote = disclose(note);
+}
+
+// Read Circuit
+// A simple circuit/query to read the public note
+export circuit getNote(): Opaque<"string"> {
+    return publicNote;
+}
