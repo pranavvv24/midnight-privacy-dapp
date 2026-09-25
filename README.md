@@ -6,9 +6,9 @@ A Midnight Network smart contract scaffolded with create-mn-app.
 
 - [x] Toolchain installed
 - [x] First Compact contract
-- [ ] Contract compiles
-- [ ] Tests pass
-- [ ] managed/ generated
+- [x] Contract compiles (WSL required on Windows)
+- [x] Tests pass
+- [x] managed/ generated
 - [ ] Contract deployed
 - [ ] Initial product idea
 - [ ] Evidence screenshots
@@ -33,20 +33,39 @@ npm run compile
 ```
 This executes `compact compile contracts/private-note.compact contracts/managed/private-note`. 
 
-When successful, this command will parse the Compact source code, generate the zero-knowledge circuits, and produce proving and verification keys inside the `contracts/managed/private-note` directory.
+When successful, this command parses the Compact source, generates zero-knowledge circuits, and produces proving/verification keys inside `contracts/managed/private-note/`.
 
-*(Note: Currently, compilation fails because the Compact compiler requires WSL on Windows, which is not installed on this host system. Docker is also unavailable to run the compiler containerized).*
+> **On Windows** the Compact compiler has no native binary — run `npm run compile` inside WSL2.
 
-### Current Build Status
+Generated artifact layout:
+```
+contracts/managed/private-note/
+├── compiler/        — compiler metadata
+├── contract/        — JS bindings (index.js, index.d.ts)
+├── keys/            — prover/verifier key files
+└── zkir/            — ZKIR circuit representation
+```
 
-- [x] Compact contract created
-- [ ] Contract compiles
-- [ ] managed/ generated
-- [ ] Tests pass
-- [ ] Contract deployed
-- [ ] Initial product idea
-- [ ] Evidence screenshots
-- [ ] 5+ meaningful commits
+## Testing
+
+The automated test suite exercises the **compiled** contract artefacts using `@midnight-ntwrk/compact-runtime` directly — no Midnight node, proof-server, wallet, or network connection is required.
+
+```bash
+npm test
+```
+
+### What the tests verify
+
+| Test | What it checks |
+|------|----------------|
+| A — Initial ledger state | `publicNote` is `""` immediately after `contract.initialState()` |
+| B — Private witness → disclosure | `setPrivateNote()` discloses the private witness value, updating `publicNote` |
+| C — Read circuit | `getNote()` returns the exact value that was previously disclosed |
+| D — Second witness value | A second `setPrivateNote()` call with `"Privacy First"` correctly replaces the prior value |
+
+Test file: `tests/private-note.test.mjs`
+
+No local services are required to run `npm test`. The tests run purely against the compiled JS runtime artefacts.
 
 ## Quick start
 
